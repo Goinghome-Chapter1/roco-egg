@@ -339,7 +339,7 @@ function setupEvents() {
     event.target.value = '';
   });
   $('#downloadTemplate').addEventListener('click', () => {
-    const blob = new Blob(['名称,性别,数量\n小黑猫,公,1\n章脑丸,母,2\n'], {type: 'text/csv;charset=utf-8'});
+    const blob = new Blob(['name,sex,count\n'], {type: 'text/csv;charset=utf-8'});
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
     link.href = url;
