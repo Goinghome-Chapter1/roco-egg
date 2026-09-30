@@ -1,0 +1,132 @@
+.pair-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 9px;
+}
+
+.pair-card {
+  padding: 11px 12px;
+  border: 1px solid #35415e;
+  border-radius: 13px;
+  background: #0d1426;
+}
+
+.pair-pets {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  font-weight: 750;
+}
+
+.pair-male { color: #a9c8ff; }
+.pair-female { color: #ffb4c0; }
+.pair-sign { color: #677490; }
+
+.pair-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 7px;
+  color: var(--muted);
+  font-size: .76rem;
+}
+
+.pair-meta span:first-child { color: var(--mint); }
+
+@media (max-width: 1050px) {
+  .pair-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 520px) {
+  .pair-meta { flex-direction: column; gap: 3px; }
+}
+
+.target-tool {
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+}
+
+.target-tool-first {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: 0;
+}
+
+.inventory-head {
+  margin-top: 22px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+}
+
+.file-import {
+  margin: 0 0 16px;
+  padding: 13px;
+  border: 1px solid #303b58;
+  border-radius: 14px;
+  background: rgba(12, 18, 35, .72);
+}
+
+.file-import-head,
+.file-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.file-import-head { justify-content: space-between; margin-bottom: 10px; }
+.file-import-head strong { display: block; font-size: .88rem; }
+.file-import-head span { display: block; margin-top: 2px; color: var(--muted); font-size: .72rem; }
+.import-mode { width: auto; min-height: 38px; padding-right: 30px; font-size: .8rem; }
+.file-input { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; }
+.file-picker { flex: 0 0 auto; padding: 9px 12px; border: 1px solid #3a4666; border-radius: 10px; background: #11182b; color: #dbe3f5; font-size: .82rem; cursor: pointer; }
+.file-picker:hover,.file-input:focus + .file-picker { border-color: var(--mint2); color: var(--mint); }
+.file-name { min-width: 0; flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--muted); font-size: .78rem; }
+.template-btn { flex: 0 0 auto; }
+.import-status.error { color: #ffadba; }
+
+.target-tool .section-head { margin-bottom: 13px; }
+.target-tool .field { margin-bottom: 8px; }
+.target-tool .search-row { grid-template-columns: minmax(0, 1fr) auto; }
+
+.target-result { margin-bottom: 20px; scroll-margin-top: 20px; }
+
+.target-card {
+  padding: 18px;
+  border: 1px solid rgba(157, 140, 255, .38);
+  border-radius: 17px;
+  background: linear-gradient(145deg, rgba(157, 140, 255, .1), rgba(13, 20, 38, .88));
+}
+
+.target-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.target-head h2 { margin: 3px 0 5px; font-size: 1.35rem; }
+.target-head p { margin: 0; color: var(--muted); line-height: 1.55; font-size: .86rem; }
+.eyebrow { color: #c4baff; font-size: .72rem; font-weight: 800; letter-spacing: .08em; }
+.target-block { margin: 18px 0; }
+.target-block h3 { margin: 0 0 10px; font-size: .96rem; }
+
+.target-pairs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.target-pair { display: flex; align-items: center; gap: 7px; flex-wrap: wrap; padding: 10px 11px; border: 1px solid #35415e; border-radius: 12px; background: #0d1426; }
+.target-pair small { width: 100%; color: var(--mint); }
+.candidate-list { display: flex; flex-wrap: wrap; gap: 7px; }
+.candidate-chip { padding: 7px 9px; border: 1px solid #38435f; border-radius: 999px; color: #bdc8df; background: rgba(13, 20, 38, .72); font-size: .76rem; }
+.candidate-chip.owned { color: var(--mint); border-color: rgba(110, 231, 216, .4); background: rgba(110, 231, 216, .08); }
+
+@media (max-width: 1050px) {
+  .target-pairs { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 520px) {
+  .target-head { flex-direction: column; }
+  .target-tool .search-row { grid-template-columns: 1fr; }
+  .file-import-head { align-items: flex-start; }
+  .file-row { flex-wrap: wrap; }
+  .file-name { flex-basis: calc(100% - 110px); }
+}

@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="根据实际拥有的异色精灵生成1公2母推荐批次、全部可行配对和目标异色搭配。" />
+  <title>洛克王国异色生蛋规划器</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23101427'/%3E%3Cpath d='M32 10c-9 0-18 17-18 29a18 18 0 0 0 36 0C50 27 41 10 32 10Z' fill='%236ee7d8'/%3E%3Cpath d='m24 33 7 7 12-14' fill='none' stroke='%23101427' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="pairs.css" />
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <div class="brand"><div class="brand-mark" aria-hidden="true">蛋</div><div><h1>异色生蛋规划器</h1><p class="sub">查看1公2母推荐批次、全部配对和目标异色获取方式。</p></div></div>
+      <div class="limits"><span class="pill" id="catalogCount">载入异色图鉴…</span><span class="pill">优先 1 公 2 母</span><span class="pill">只用现有精灵</span></div>
+    </header>
+    <section class="workspace">
+      <aside class="panel input-panel" aria-label="异色精灵录入">
+        <section class="target-tool target-tool-first" aria-label="目标异色精灵分析">
+          <div class="section-head"><h2>想要哪只异色？</h2><span class="counter">目标分析</span></div>
+          <div class="field"><label for="targetPetName">目标精灵</label><div class="search-row"><input class="control" id="targetPetName" list="petOptions" autocomplete="off" placeholder="例如：治愈兔" /><button class="secondary" id="analyzeTarget" type="button">分析搭配</button></div></div>
+          <p class="hint">分析完成后会自动定位到结果，并列出你已有的可用公宠及全部候选公宠。</p>
+        </section>
+        <div class="section-head inventory-head"><h2>我的异色精灵</h2><div class="head-actions"><span class="counter" id="inventoryCount">0 只</span><button class="text-btn" id="clearAll" type="button">清空</button></div></div>
+        <section class="file-import" aria-label="从文件导入异色精灵">
+          <div class="file-import-head"><div><strong>从文件导入</strong><span>TXT / CSV / TSV</span></div><select class="control import-mode" id="fileImportMode" aria-label="文件导入方式"><option value="replace">替换当前列表</option><option value="append">追加到当前列表</option></select></div>
+          <div class="file-row"><input class="file-input" id="inventoryFile" type="file" accept=".txt,.csv,.tsv,text/plain,text/csv,text/tab-separated-values" /><label class="file-picker" for="inventoryFile">选择文件</label><span class="file-name" id="fileName">尚未选择</span><button class="text-btn template-btn" id="downloadTemplate" type="button">下载模板</button></div>
+          <p class="hint">每行填写“名称、性别、数量”，数量可省略；也支持你现有的“名称 + Tab + 性别”格式。文件只在本机浏览器中解析，不会上传。</p>
+          <p class="import-status hidden" id="fileImportStatus"></p>
+        </section>
+        <div class="field"><label for="petName">精灵名称</label><div class="search-row"><input class="control" id="petName" list="petOptions" autocomplete="off" placeholder="输入或选择，例如：小黑猫" /><datalist id="petOptions"></datalist><button class="primary" id="addPet" type="button">加入</button></div></div>
+        <div class="field"><span class="label">性别</span><div class="sex-toggle"><button class="sex-btn active" data-sex="公" type="button">♂ 公</button><button class="sex-btn" data-sex="母" type="button">♀ 母</button></div></div>
+        <p class="hint">同名精灵可以重复加入；每一行代表一只实际拥有的异色个体。</p>
+        <details class="bulk"><summary>批量粘贴名称与性别</summary><textarea class="control" id="bulkInput" placeholder="每行一只，例如：&#10;小黑猫 公&#10;章脑丸 母&#10;玳龟，母"></textarea><div class="bulk-actions"><button class="secondary" id="bulkAdd" type="button">批量加入</button></div><p class="import-status hidden" id="importStatus"></p></details>
+        <div class="inventory" id="inventory"><div class="empty-small">还没有录入精灵</div></div>
+        <button class="primary generate" id="generate" type="button" disabled>生成生蛋规划</button>
+      </aside>
+      <section class="panel output" aria-live="polite">
+        <div id="targetResult" class="target-result hidden"></div>
+        <div class="output-empty" id="emptyResult"><div><div class="orbit" aria-hidden="true">✦</div><h2>规划结果会显示在这里</h2><p>系统优先按1公2母安排推荐批次，并列出全部可行配对；也可以单独分析某只目标异色。</p></div></div>
+        <div id="planResult" class="hidden"></div>
+      </section>
+    </section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
