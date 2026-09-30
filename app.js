@@ -247,10 +247,10 @@ function parseInventoryText(text) {
     if (!line || line.startsWith('#')) return;
     const cells = splitImportLine(line);
     const normalizedHeaders = cells.map(cell => cell.replace(/\s/g, ''));
-    const nameIndex = normalizedHeaders.findIndex(cell => ['name', '精灵名称', '一阶精灵'].includes(cell));
-    const sexIndex = normalizedHeaders.findIndex(cell => ['sex', '公母'].includes(cell));
+    const nameIndex = normalizedHeaders.findIndex(cell => ['名称', '精灵名称', '一阶精灵'].includes(cell));
+    const sexIndex = normalizedHeaders.findIndex(cell => ['性别', '公母'].includes(cell));
     if (!columns && nameIndex >= 0 && sexIndex >= 0) {
-      columns = {name: nameIndex, sex: sexIndex, count: normalizedHeaders.findIndex(cell => ['count', '个数'].includes(cell))};
+      columns = {name: nameIndex, sex: sexIndex, count: normalizedHeaders.findIndex(cell => ['数量', '个数'].includes(cell))};
       return;
     }
 
@@ -339,7 +339,7 @@ function setupEvents() {
     event.target.value = '';
   });
   $('#downloadTemplate').addEventListener('click', () => {
-    const blob = new Blob(['name,sex,count\n'], {type: 'text/csv;charset=utf-8'});
+    const blob = new Blob(['\uFEFF名称,性别,数量\n小黑猫,公,1\n章脑丸,母,2\n'], {type: 'text/csv;charset=utf-8'});
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
     link.href = url;
