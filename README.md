@@ -34,20 +34,12 @@
 
 性别可以填写 `公`、`母`、`雄`或`雌`。数量省略时按 1 只处理。
 
-## GitHub Pages 部署
-
-1. 创建一个 GitHub 仓库。
-2. 将本项目全部文件上传到仓库根目录，确保 `index.html` 位于根目录。
-3. 打开仓库的 **Settings → Pages**。
-4. 在发布来源中选择 **Deploy from a branch**。
-5. 选择 `main` 分支和 `/ (root)` 目录，然后保存。
-6. 等待 GitHub Pages 完成构建，即可通过下面的地址访问：
+## 线上访问
 
 ```text
-https://你的用户名.github.io/仓库名/
+https://goinghome-chapter1.github.io/roco-egg/
 ```
 
-项目使用相对资源路径，可以直接部署在 GitHub Pages 的仓库子路径下，不需要服务器或后端服务。
 
 ## 本地运行
 
