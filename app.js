@@ -247,10 +247,10 @@ function parseInventoryText(text) {
     if (!line || line.startsWith('#')) return;
     const cells = splitImportLine(line);
     const normalizedHeaders = cells.map(cell => cell.replace(/\s/g, ''));
-    const nameIndex = normalizedHeaders.findIndex(cell => ['名称', '精灵名称', '一阶精灵'].includes(cell));
-    const sexIndex = normalizedHeaders.findIndex(cell => ['性别', '公母'].includes(cell));
+    const nameIndex = normalizedHeaders.findIndex(cell => ['name', '精灵名称', '一阶精灵'].includes(cell));
+    const sexIndex = normalizedHeaders.findIndex(cell => ['sex', '公母'].includes(cell));
     if (!columns && nameIndex >= 0 && sexIndex >= 0) {
-      columns = {name: nameIndex, sex: sexIndex, count: normalizedHeaders.findIndex(cell => ['数量', '个数'].includes(cell))};
+      columns = {name: nameIndex, sex: sexIndex, count: normalizedHeaders.findIndex(cell => ['count', '个数'].includes(cell))};
       return;
     }
 
